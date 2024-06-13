@@ -1,10 +1,6 @@
 // /.netlify/functions/webhook
 
 exports.handler = async (event, context) => {
-    const { body } = event;
-    const { payload } = JSON.parse(body);
-    
-    console.log('payload', payload);
     console.log('event', event);
     console.log('context', context);
 
