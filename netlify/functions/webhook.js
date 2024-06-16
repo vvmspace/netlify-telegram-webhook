@@ -1,4 +1,6 @@
 // /.netlify/functions/webhook
+const fetch = require("node-fetch");
+const { TELEGRAM_BOT_TOKEN } = process.env;
 
 exports.handler = async (event, context) => {
   console.log("event", event);
@@ -31,20 +33,22 @@ exports.handler = async (event, context) => {
 
   console.log(body);
 
-  // reply to the user
-    const response = {
-        method: "sendMessage",
-        chat_id: chatId,
-        text: `Hello, ${chatFirstName}!`,
-    };
+  const reply = JSON.stringify(body, null, 2);
+  // reply to the user via post request
+  const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+  await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text: reply,
+    }),
+  });
 
-    return {
-        statusCode: 200,
-        body: JSON.stringify(response),
-    };
-
-//   return {
-//     statusCode: 200,
-//     body: JSON.stringify({ event, context }, null, 2),
-//   };
+  return {
+    statusCode: 200,
+    body: "Webhook received",
+  };
 };
