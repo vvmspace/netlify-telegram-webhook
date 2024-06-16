@@ -3,8 +3,6 @@ const fetch = require("node-fetch");
 const { TELEGRAM_BOT_TOKEN } = process.env;
 
 exports.handler = async (event, context) => {
-  console.log("event", event);
-  console.log("context", context);
   const bodyAsText = event.body;
   if (!bodyAsText) {
     return {
@@ -36,6 +34,8 @@ exports.handler = async (event, context) => {
   const reply = JSON.stringify(body, null, 2);
   // reply to the user via post request
   const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+  console.log("url", url);
+    console.log("reply", reply);
   await fetch(url, {
     method: "POST",
     headers: {
