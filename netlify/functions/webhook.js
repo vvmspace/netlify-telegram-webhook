@@ -36,7 +36,7 @@ exports.handler = async (event, context) => {
   const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
   console.log("url", url);
     console.log("reply", reply);
-  await fetch(url, {
+  const result = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -46,6 +46,8 @@ exports.handler = async (event, context) => {
       text: reply,
     }),
   });
+
+  console.log("result", result);
 
   return {
     statusCode: 200,
