@@ -6,7 +6,7 @@ Deploy your Telegram bot to Netlify and run it without managing a server.
 
 1. Click "Use this template" button to create a new repository from this template.
 2. Create a new bot using [BotFather](https://t.me/botfather) and get the token.
-3. Add your repository to Netlify.
+3. Add your repository to [Netlify](https://app.netlify.com/start).
 4. Set environment variable `TELEGRAM_BOT_TOKEN` with your bot token.
 5. Wait for the deployment to continue.
 6. Set the webhook using npx script: `npx sethook TELEGRAM_BOT_TOKEN https://DOMAIN.netlify.app/.netlify/functions/webhook`
