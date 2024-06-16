@@ -12,6 +12,7 @@ exports.handler = async (event) => {
   }
 
   const body = JSON.parse(bodyAsText);
+  const chatId = body.message.chat.id;
   const reply = JSON.stringify(body, null, 2);
   const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
   
