@@ -1,5 +1,4 @@
 // /.netlify/functions/webhook
-const fetch = require("node-fetch");
 const { TELEGRAM_BOT_TOKEN } = process.env;
 
 exports.handler = async (event, context) => {
